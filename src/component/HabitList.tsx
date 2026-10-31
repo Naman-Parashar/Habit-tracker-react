@@ -1,7 +1,8 @@
-import type { habitType } from "../types/Types";
+import type { HabitType } from "../types/Types";
+import HabitItem from "./HabitItem";
 
 function HabitList() {
-  const habits:habitType[] = [
+  const habits:HabitType[] = [
     {id:1, name:"naman"}
   ];
   if (habits.length === 0) {
@@ -12,9 +13,9 @@ function HabitList() {
     );
   }
   return <div className="flex flex-col gap-3">
-    {habits.map((habit:habitType)=> {
+    {habits.map((habit:HabitType)=> {
         return (
-        <h1 key={habit.id}>{habit.name}</h1>
+        <HabitItem key={habit.id} habit={habit}/>
     )
     })}
   </div>;
