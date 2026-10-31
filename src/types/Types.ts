@@ -8,3 +8,8 @@ export interface ButtonPropsChildrenType{
     children:ReactNode
 }
 
+export interface habitType{
+    id: number;
+    name:string;
+}
+
