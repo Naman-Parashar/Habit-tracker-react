@@ -1,8 +1,8 @@
 import { eachDayOfInterval, endOfWeek, format, isFuture, startOfWeek } from "date-fns";
-import type { HabitItemProps } from "../types/Types";
+import type { HabitType } from "../types/Types";
 import Button from "./Button";
 
-function HabitItem({ habit }: HabitItemProps) {
+function HabitItem({name }: HabitType) {
   const visibleDates = eachDayOfInterval({
     start: startOfWeek(new Date(), { weekStartsOn: 1 }),
     end: endOfWeek(new Date(), { weekStartsOn: 1 }),
@@ -12,7 +12,7 @@ function HabitItem({ habit }: HabitItemProps) {
     <div className="rounded-xl bg-zinc-800 p-4 flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <div className="flex gap-3 items-center">
-          <span className="font-medium">{habit.name}</span>
+          <span className="font-medium">{name}</span>
           <span className="text-sm text-amber-400">🔥 2</span>
         </div>
 

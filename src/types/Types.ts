@@ -21,6 +21,6 @@ export interface HabitType{
 }
 
 export interface HabitItemProps{
-    habit: HabitType;
+    habit: HabitType[];
 }
 
