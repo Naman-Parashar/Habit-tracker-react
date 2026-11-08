@@ -1,12 +1,15 @@
-import type { ReactNode } from "react"
+import { type ComponentProps } from "react"
 
 export interface ButtonPropsStringType{
     text:string
 }
 
-export interface ButtonPropsChildrenType{
-    children:ReactNode;
-    disabled?: boolean;
+// export interface ButtonPropsChildrenType{
+//     children:ReactNode;
+//     disabled?: boolean;
+// }
+
+export interface ButtonPropsChildrenType extends ComponentProps<"button">{
 }
 
 export interface HabitType{

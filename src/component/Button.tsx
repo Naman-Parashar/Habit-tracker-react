@@ -6,10 +6,10 @@ import type { ButtonPropsChildrenType } from "../types/Types"
 //   )
 // }
 
-function Button({children, disabled}: ButtonPropsChildrenType & { disabled?: boolean }) {
+function Button({...props}: ButtonPropsChildrenType & { disabled?: boolean }) {
   return (
     <button 
-    disabled={disabled}
+    {...props}
     className="
     bg-violet-600 
     hover:bg-violet-400
@@ -19,9 +19,8 @@ function Button({children, disabled}: ButtonPropsChildrenType & { disabled?: boo
     py-1
     disabled:opacity-30
     disabled:cursor-not-allowed
-    ">
-        {children}
-    </button>
+    "
+    />
   )
 }
 
