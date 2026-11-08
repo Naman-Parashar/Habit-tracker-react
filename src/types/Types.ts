@@ -5,7 +5,8 @@ export interface ButtonPropsStringType{
 }
 
 export interface ButtonPropsChildrenType{
-    children:ReactNode
+    children:ReactNode;
+    disabled?: boolean;
 }
 
 export interface HabitType{

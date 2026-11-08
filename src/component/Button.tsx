@@ -6,9 +6,11 @@ import type { ButtonPropsChildrenType } from "../types/Types"
 //   )
 // }
 
-function Button({children}: ButtonPropsChildrenType) {
+function Button({children, disabled}: ButtonPropsChildrenType & { disabled?: boolean }) {
   return (
-    <button className="
+    <button 
+    disabled={disabled}
+    className="
     bg-violet-600 
     hover:bg-violet-400
     transition-colors
