@@ -14,6 +14,13 @@ function App() {
       habit: [...habit.habit, {id,name}]
     }))
   }
+
+  function deleteHabit(id: number):void {
+    setHabit(habit => ({
+      habit: habit.habit.filter(habit => habit.id !== id)
+    }))
+  }
+
   return (
       <div className="max-w-2xl mx-auto p-4 flex flex-col gap-4">
         {/* Headed */}
@@ -23,7 +30,7 @@ function App() {
         <HabitForm addHabit={addHabit}/>
 
       {/* List card */}
-      <HabitList habit={habit.habit}/>
+      <HabitList habit={habit.habit} deleteHabit={deleteHabit}/>
       </div>
   );
 }

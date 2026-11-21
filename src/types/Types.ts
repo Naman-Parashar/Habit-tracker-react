@@ -18,9 +18,11 @@ export type VarientType = "primary" | "secondary" | "ghost-destructive";
 export interface HabitType{
     id: number;
     name:string;
+    deleteHabit?: (id:number)=>void;
 }
 
 export interface HabitItemProps{
     habit: HabitType[];
+    deleteHabit?: (id:number)=>void;
 }
 

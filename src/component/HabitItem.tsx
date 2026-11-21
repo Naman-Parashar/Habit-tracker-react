@@ -2,7 +2,7 @@ import { eachDayOfInterval, endOfWeek, format, isFuture, startOfWeek } from "dat
 import type { HabitType } from "../types/Types";
 import Button from "./Button";
 
-function HabitItem({name }: HabitType) {
+function HabitItem({id,name,deleteHabit }: HabitType) {
   const visibleDates = eachDayOfInterval({
     start: startOfWeek(new Date(), { weekStartsOn: 1 }),
     end: endOfWeek(new Date(), { weekStartsOn: 1 }),
@@ -16,7 +16,7 @@ function HabitItem({name }: HabitType) {
           <span className="text-sm text-amber-400">🔥 2</span>
         </div>
 
-        <Button varient="ghost-destructive" className="text-sm">Delete</Button>
+        <Button onClick={() => deleteHabit && deleteHabit(id)} varient="ghost-destructive" className="text-sm">Delete</Button>
       </div>
 
       <div className="flex gap-1.5">
