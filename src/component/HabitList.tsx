@@ -2,7 +2,7 @@ import type { JSX } from "react/jsx-runtime";
 import type { HabitItemProps, HabitType } from "../types/Types";
 import HabitItem from "./HabitItem";
 
-function HabitList({habit, deleteHabit}: HabitItemProps): JSX.Element {
+function HabitList({habit, deleteHabit, toggleHabit}: HabitItemProps): JSX.Element {
 
   if (habit.length === 0) {
     return (
@@ -14,7 +14,7 @@ function HabitList({habit, deleteHabit}: HabitItemProps): JSX.Element {
   return <div className="flex flex-col gap-3">
     {habit.map((habit:HabitType)=> {
         return (
-        <HabitItem key={habit.id} {...habit} deleteHabit={deleteHabit}/>
+        <HabitItem key={habit.id} {...habit} deleteHabit={deleteHabit} toggleHabit={toggleHabit}/>
     )
     })}
   </div>;

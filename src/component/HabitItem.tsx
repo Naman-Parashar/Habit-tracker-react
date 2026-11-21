@@ -1,8 +1,8 @@
-import { eachDayOfInterval, endOfWeek, format, isFuture, startOfWeek } from "date-fns";
+import { eachDayOfInterval, endOfWeek, format, isFuture, isSameDay, startOfWeek } from "date-fns";
 import type { HabitType } from "../types/Types";
 import Button from "./Button";
 
-function HabitItem({id,name,deleteHabit }: HabitType) {
+function HabitItem({id,name,deleteHabit, complition, toggleHabit }: HabitType) {
   const visibleDates = eachDayOfInterval({
     start: startOfWeek(new Date(), { weekStartsOn: 1 }),
     end: endOfWeek(new Date(), { weekStartsOn: 1 }),
@@ -22,7 +22,13 @@ function HabitItem({id,name,deleteHabit }: HabitType) {
       <div className="flex gap-1.5">
         {visibleDates.map((date) => (
             
-          <Button className="flex flex-1 flex-col items-center gap-0.5 rounded-lg text-xs" key={date.toISOString()} disabled={isFuture(date)}>
+          <Button 
+          className="flex flex-1 flex-col items-center gap-0.5 rounded-lg text-xs" 
+          key={date.toISOString()} 
+          disabled={isFuture(date)}
+          varient={complition?.some(d => isSameDay(date, d)) ? "primary" : "secondary"}
+          onClick={() => toggleHabit && toggleHabit(id, date)}
+          >
             <span className="font-medium">{format(date, "EEE")}</span>
             <span>{format(date, "d")}</span>
           </Button>

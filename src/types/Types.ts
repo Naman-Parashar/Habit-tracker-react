@@ -18,11 +18,14 @@ export type VarientType = "primary" | "secondary" | "ghost-destructive";
 export interface HabitType{
     id: number;
     name:string;
+    complition?: Date[];
     deleteHabit?: (id:number)=>void;
+    toggleHabit?: (id:number, date:Date)=>void;
 }
 
 export interface HabitItemProps{
     habit: HabitType[];
     deleteHabit?: (id:number)=>void;
+    toggleHabit?: (id:number, date:Date)=>void;
 }
 
