@@ -1,4 +1,4 @@
-import { eachDayOfInterval, endOfWeek, format, isFuture, isSameDay, startOfWeek } from "date-fns";
+import { eachDayOfInterval, endOfWeek, format, isFuture, isSameDay, startOfWeek, subDays } from "date-fns";
 import type { HabitType } from "../types/Types";
 import Button from "./Button";
 
@@ -8,12 +8,28 @@ function HabitItem({id,name,deleteHabit, complition, toggleHabit }: HabitType) {
     end: endOfWeek(new Date(), { weekStartsOn: 1 }),
   });
 
+  function getStreak(completions: Date[]): number {
+  let streak = 0
+  let date = new Date()
+
+  while (completions.some(c => isSameDay(c, date))) {
+    streak++
+    date = subDays(date, 1)
+  }
+
+  return streak
+}
+
+const streak = getStreak(complition || []);
+
   return (
     <div className="rounded-xl bg-zinc-800 p-4 flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <div className="flex gap-3 items-center">
           <span className="font-medium">{name}</span>
-          <span className="text-sm text-amber-400">🔥 2</span>
+          {streak !=0 &&
+          (<span className="text-sm text-amber-400">🔥 {streak}</span>)
+          }
         </div>
 
         <Button onClick={() => deleteHabit && deleteHabit(id)} varient="ghost-destructive" className="text-sm">Delete</Button>
