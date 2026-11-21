@@ -1,10 +1,11 @@
 import { useState, type JSX } from "react";
 import Button from "./Button";
-import type { HabitType } from "../types/Types";
+import { useHabits } from "../context/useHabits";
 
-function HabitForm({addHabit}: {addHabit: (habit: HabitType) => void}): JSX.Element {
+function HabitForm(): JSX.Element {
 
   const [name, setName] = useState<string>("");
+  const { addHabit } = useHabits()
 
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>):void {
     e.preventDefault()
