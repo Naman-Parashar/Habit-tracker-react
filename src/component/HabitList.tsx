@@ -1,9 +1,9 @@
 import type { JSX } from "react/jsx-runtime";
-import type { HabitType } from "../types/Types";
+import type { HabitListProps, HabitType } from "../types/Types";
 import HabitItem from "./HabitItem";
 import { useHabits } from "../context/useHabits";
 
-function HabitList(): JSX.Element {
+function HabitList({ visibleDates }: HabitListProps): JSX.Element {
 const { habits } = useHabits()
   if (habits.length === 0) {
     return (
@@ -15,7 +15,7 @@ const { habits } = useHabits()
   return <div className="flex flex-col gap-3">
     {habits.map((habit:HabitType)=> {
         return (
-        <HabitItem key={habit.id} {...habit}/>
+        <HabitItem key={habit.id} {...habit}  visibleDates={visibleDates}/>
     )
     })}
   </div>;
